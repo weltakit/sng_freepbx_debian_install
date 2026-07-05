@@ -200,7 +200,7 @@ compare_version() {
 
 check_version() {
     # Fetching latest version and checksum
-    REPO_URL="https://github.com/FreePBX/sng_freepbx_debian_install/raw/master"
+    REPO_URL="https://github.com/weltakit/sng_freepbx_debian_install/raw/master"
     wget -O /tmp/sng_freepbx_debian_install_latest_from_github.sh "$REPO_URL/sng_freepbx_debian_install.sh" >> "$log"
 
     latest_version=$(grep '^SCRIPTVER="' /tmp/sng_freepbx_debian_install_latest_from_github.sh | awk -F'"' '{print $2}')
