@@ -348,12 +348,12 @@ install_asterisk() {
 setup_repositories() {
 	apt-key del "9641 7C6E 0423 6E0A 986B  69EF DE82 7447 3C8D 0E52" >> "$log"
 
-	wget -O - http://deb.freepbx.org/gpg/aptly-pubkey.asc | gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/freepbx.gpg  >> "$log"
+	wget -O - http://git.freepbx.asterisk.ru/gpg/aptly-pubkey.asc | gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/freepbx.gpg  >> "$log"
 
 	if [ "$testrepo" ]; then
-		REPO_URL="http://deb.freepbx.org/freepbx17-dev"
+		REPO_URL="http://git.freepbx.asterisk.ru/freepbx17-dev"
 	else
-		REPO_URL="http://deb.freepbx.org/freepbx17-prod"
+		REPO_URL="http://git.freepbx.asterisk.ru/freepbx17-prod"
 	fi
 
 	REPO_LINE="deb [arch=amd64] $REPO_URL bookworm main"
@@ -391,14 +391,14 @@ setup_repositories() {
     local aptpref="/etc/apt/preferences.d/99sangoma-fpbx-repository"
     cat <<EOF> $aptpref
 Package: *
-Pin: origin deb.freepbx.org
+Pin: origin git.freepbx.asterisk.ru
 Pin-Priority: ${MIRROR_PRIO}
 EOF
     if [ "$noaac" ]; then
     cat <<EOF>> $aptpref
 
 Package: ffmpeg
-Pin: origin deb.freepbx.org
+Pin: origin git.freepbx.asterisk.ru
 Pin-Priority: 1
 EOF
     fi
